@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Open up the GH repo where this script is kept, i.e. initially
+# github.com/m-dyson/scripts
+
+BASE_DIR="$(dirname $0 | cut -d '/' -f 1)"
+URL_VAR="$(egrep -o '([a-zA-Z\-]+/\w+).git$' $BASE_DIR/.git/config | cut -d '.' -f 1)"
+URL="https://github.com/$URL_VAR"
+open -a "Google Chrome" $URL
