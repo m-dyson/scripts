@@ -1,0 +1,37 @@
+#!/bin/bash
+
+########################################
+# Stuff to run on a fresh THM Kali box #
+########################################
+
+rm -rf ~/thm 2> /dev/null
+
+# Get decent ~/.bashrc in root's home dir:
+cp /home/kali/.bashrc ~
+
+# Make seprate dir for this THM session:
+mkdir ~/thm
+
+# Make sure apt repos know of latest versions:
+# NB! Is "sudo" prefix necessary?
+# sudo apt update
+
+# Install missing packages:
+# apt install gobuster
+
+# Get own GH scripts:
+mkdir ~/thm/scripts
+
+for s in 'lhost' 'rhost'; do
+	echo "WGET?"
+	fp="/root/thm/scripts/$s"
+	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
+	chmod 700 "$fp"
+done
+
+# Write LHOST/RHOST to ~/.bashrc. Requires another cmd (e.g "bash") to get
+# the vars in your current shell session!
+/root/thm/scripts/lhost --force
+/root/thm/scripts/rhost --force
+
+cd /root/thm
