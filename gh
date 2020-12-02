@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Open up the GH repo where this script is kept, i.e. initially
-# github.com/m-dyson/scripts
+# github.com/m-dyson/scripts. Now you can quickly go to GH in your
+# browser, w/o the need to fumble about with the browser URL input.
 
 BASE_DIR="$(dirname $0 | cut -d '/' -f 1)"
 URL_VAR="$(egrep -o '([a-zA-Z\-]+/\w+).git$' $BASE_DIR/.git/config | cut -d '.' -f 1)"

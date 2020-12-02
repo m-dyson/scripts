@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# List LHOST if already set, else (1) write to ~/.bash_profile for following
+# shells and (2) echo statement for manual copying.
+
+if [ -z "$LHOST" ]; then
+	echo "The var LHOST is not set. Please enter IP for Kali machine:"
+	echo -n ">>> "
+	read lhost
+	echo "Use new value: $lhost? [y/n]"
+	echo -n ">>> "
+	read confirmation
+	if [ "${confirmation:0:1}" == 'y' ]; then
+		echo "OK, using new value for LHOST"
+		str="export LHOST=$lhost"
+		echo "$str" >> ~/.bashrc
+		echo "Updated ~/.bashrc -> for now, please copy and run:"
+		echo
+		echo "$str"
+		echo
+	else
+		echo "Abort"
+	fi
+else
+	echo "LHOST=$LHOST"
+fi
+
