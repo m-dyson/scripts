@@ -3,7 +3,7 @@
 # UNTESTED!
 
 # Remove old value, from (1) .bashrc and (2) current shell (and it's children):
-local line_nr=$(egrep -n '^export RHOST=' ~/.bashrc | cut -d ':' -f 1)
+line_nr=$(egrep -n '^export RHOST=' ~/.bashrc | cut -d ':' -f 1)
 sed "$line_nr"'d' ~/.bashrc
 unset RHOST
 

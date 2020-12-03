@@ -4,7 +4,7 @@
 # shells and (2) echo statement for manual copying.
 if [ -z "$LHOST" ]; then
 	echo "The var LHOST is not yet set...."
-	local lhost_eth0=$(ip a show eth0 | egrep -o '^\s*inet\s[0-9.]+' | xargs | cut -d ' ' -f 2 2> /dev/null)
+	lhost_eth0=$(ip a show eth0 | egrep -o '^\s*inet\s[0-9.]+' | xargs | cut -d ' ' -f 2 2> /dev/null)
 	if [ -z "$lhost_eth0" ]; then
 		echo "Please enter IP for Kali machine:"
 		echo -n ">>> "
@@ -13,7 +13,7 @@ if [ -z "$LHOST" ]; then
 		lhost="$lhost_eth"
 	fi
 
-	if [ "$1" -eq '--force' ]; then
+	if [ $1 = '--force' ]; then
 		echo "OK, using new value for LHOST: $lhost"
 	else
 		echo "Use new value: $lhost? [y/n]"
@@ -21,9 +21,10 @@ if [ -z "$LHOST" ]; then
 		read confirmation
 	fi
 
-	if [ "${confirmation:0:1}" -eq 'y' ] || [ "$1" -eq '--force' ]; then
+	if [ "${confirmation:0:1}" = 'y' ] || [ $1 = '--force' ]; then
 		echo "export LHOST=$lhost" >> ~/.bashrc
-		echo "Updated ~/.bashrc"
+		echo "Updated ~/.bashrc..."
+		./please-run-bash
 	else
 		echo "Abort!"
 	fi

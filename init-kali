@@ -6,7 +6,7 @@
 
 cd ~
 
-local P_THM = '/root/thm'
+P_THM='/root/thm'
 
 rm -rf ~/thinclient_drives
 rm -rf $P_THM 2> /dev/null
@@ -30,21 +30,21 @@ echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
 
 # Get own GH scripts:
-local P_SCR = "$P_THM/scripts"
+P_SCR = "$P_THM/scripts"
 mkdir -p $P_SCR
 
-for s in lhost rhost; do
+for s in lhost rhost reset-rhost please-run-bash; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
 	chmod 700 "$fp"
 done
+
+# Make sure scripts are in $PATH:
+echo "export PATH=$P_SCR:$PATH" >> ~/.bashrc
 
 # Write LHOST/RHOST to ~/.bashrc. Requires another cmd (e.g "bash") to get
 # the vars in your current shell session!
 "$P_SCR/lhost" --force
 "$P_SCR/rhost" --force
 
-echo "############################################"
-echo "# Enter 'bash' to complete initialization! #"
-echo "############################################"
-echo
+"$P_SCR/please-run-bash"
