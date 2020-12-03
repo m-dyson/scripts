@@ -13,7 +13,7 @@ if [ -z "$LHOST" ]; then
 		lhost="$lhost_eth"
 	fi
 
-	if [ $1 = '--force' ]; then
+	if [ $1 == '--force' ]; then
 		echo "OK, using new value for LHOST: $lhost"
 	else
 		echo "Use new value: $lhost? [y/n]"
