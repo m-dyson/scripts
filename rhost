@@ -10,11 +10,11 @@ if [ -z "$RHOST" ]; then
 	echo "Use new value: $rhost? [y/n]"
 	echo -n ">>> "
 	read confirmation
-	if [ "${confirmation:0:1}" == "y" ] || [ $1 == '--force' ]; then
+	if [ "${confirmation:0:1}" == "y" ] || [ "$1" == "--force" ]; then
 		echo "OK, using new value for RHOST"
 		str="export RHOST=$rhost"
 		echo "$str" >> ~/.bashrc
-		echo "Updated ~/.bashrc -> for now, please copy and run:"
+		echo "Updated ~/.bashrc"
 		./please-run-bash
 	else
 		echo "Abort"
