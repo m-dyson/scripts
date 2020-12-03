@@ -14,8 +14,20 @@ rm -rf $P_THM 2> /dev/null
 # Get decent ~/.bashrc in root's home dir:
 cp /home/kali/.bashrc ~
 
-# Make seprate dir for this THM session:
+# Make seperate dir for this THM session:
 mkdir -p $P_THM
+
+# TMP: check if dir creation succeeded:
+[ -d "/root/thm" ] && echo "SUCCESS: Directory /root/thm exists." \
+	|| (echo "ERROR: Directory /root/thm does not exist!" && exit 1)
+
+# Make seperate dir for scripts:
+P_SCR="$P_THM"'/scripts'
+mkdir -p $P_SCR
+
+# TMP: check if dir creation succeeded:
+[ -d "/root/thm/scripts" ] && echo "SUCCESS: Directory /root/thm/scripts exists." \
+	|| (echo "ERROR: Directory /root/thm/scripts does not exist!" && exit 1)
 
 # Make sure apt repos know of latest versions:
 # NB! Is "sudo" prefix necessary?
@@ -30,9 +42,6 @@ echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
 
 # Get own GH scripts:
-P_SCR = "$P_THM/scripts"
-mkdir -p $P_SCR
-
 for s in lhost rhost reset-rhost please-run-bash; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
