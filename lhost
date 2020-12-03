@@ -2,24 +2,30 @@
 
 # List LHOST if already set, else (1) write to ~/.bash_profile for following
 # shells and (2) echo statement for manual copying.
-
 if [ -z "$LHOST" ]; then
-	echo "The var LHOST is not set. Please enter IP for Kali machine:"
-	echo -n ">>> "
-	read lhost
-	echo "Use new value: $lhost? [y/n]"
-	echo -n ">>> "
-	read confirmation
-	if [ "${confirmation:0:1}" == 'y' ] || [ "$1" == '--force' ]; then
-		echo "OK, using new value for LHOST"
-		str="export LHOST=$lhost"
-		echo "$str" >> ~/.bashrc
-		echo "Updated ~/.bashrc -> for now, please copy and run:"
-		echo
-		echo "$str"
-		echo
+	echo "The var LHOST is not yet set...."
+	local lhost_eth0=$(ip a show eth0 | egrep -o '^\s*inet\s[0-9.]+' | xargs | cut -d ' ' -f 2 2> /dev/null)
+	if [ -z "$lhost_eth0" ]; then
+		echo "Please enter IP for Kali machine:"
+		echo -n ">>> "
+		read lhost
 	else
-		echo "Abort"
+		lhost="$lhost_eth"
+	fi
+
+	if [ "$1" -eq '--force' ]; then
+		echo "OK, using new value for LHOST: $lhost"
+	else
+		echo "Use new value: $lhost? [y/n]"
+		echo -n ">>> "
+		read confirmation
+	fi
+
+	if [ "${confirmation:0:1}" -eq 'y' ] || [ "$1" -eq '--force' ]; then
+		echo "export LHOST=$lhost" >> ~/.bashrc
+		echo "Updated ~/.bashrc"
+	else
+		echo "Abort!"
 	fi
 else
 	echo "LHOST=$LHOST"
