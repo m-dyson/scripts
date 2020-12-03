@@ -30,8 +30,8 @@ mkdir -p $P_SCR
 	|| (echo "ERROR: Directory /root/thm/scripts does not exist!" && exit 1)
 
 # Make sure apt repos know of latest versions:
-# NB! Is "sudo" prefix necessary?
-sudo apt-get update --auto-remove=true
+apt update
+apt autoremove
 
 # Install missing packages:
 apt install gobuster
@@ -42,7 +42,7 @@ echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
 
 # Get own GH scripts:
-for s in lhost rhost reset-rhost please-run-bash; do
+for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
 	chmod 700 "$fp"
@@ -56,4 +56,5 @@ echo "export PATH=$P_SCR:$PATH" >> ~/.bashrc
 "$P_SCR/lhost" --force
 "$P_SCR/rhost" --force
 
+# Attend user to rerun bash:
 "$P_SCR/please-run-bash"
