@@ -21,7 +21,7 @@ if [ -z "$LHOST" ]; then
 		read confirmation
 	fi
 
-	if [ "${confirmation:0:1}" = 'y' ] || [ $1 = '--force' ]; then
+	if [ "${confirmation:0:1}" == "y" ] || [ $1 == '--force' ]; then
 		echo "export LHOST=$lhost" >> ~/.bashrc
 		echo "Updated ~/.bashrc..."
 		./please-run-bash
