@@ -10,7 +10,7 @@ if [ -z "$LHOST" ]; then
 	echo "Use new value: $lhost? [y/n]"
 	echo -n ">>> "
 	read confirmation
-	if [ "${confirmation:0:1}" == 'y' || "$1" == '--force' ]; then
+	if [ "${confirmation:0:1}" == 'y' ] || [ "$1" == '--force' ]; then
 		echo "OK, using new value for LHOST"
 		str="export LHOST=$lhost"
 		echo "$str" >> ~/.bashrc

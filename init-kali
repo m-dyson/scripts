@@ -4,13 +4,15 @@
 # Stuff to run on a fresh THM Kali box #
 ########################################
 
+cd ~
+
 rm -rf ~/thm 2> /dev/null
 
 # Get decent ~/.bashrc in root's home dir:
 cp /home/kali/.bashrc ~
 
 # Make seprate dir for this THM session:
-mkdir ~/thm
+mkdir -p ~/thm
 
 # Make sure apt repos know of latest versions:
 # NB! Is "sudo" prefix necessary?
@@ -20,7 +22,7 @@ mkdir ~/thm
 # apt install gobuster
 
 # Get own GH scripts:
-mkdir ~/thm/scripts
+mkdir -p ~/thm/scripts
 
 for s in 'lhost' 'rhost'; do
 	echo "WGET?"
