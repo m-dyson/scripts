@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function usage {
+	echo "usage: $0 <file> <wanted-length>"
+	exit 1
+}
+
+if [[ -z $2 ]] ; then
+	usage
+fi
+
+if [ ! -f $1 ]; then
+	usage
+fi
+
+
+awk "{ if (length(\$0) == $2) print }" $1
