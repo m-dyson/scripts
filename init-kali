@@ -31,22 +31,33 @@ mkdir -p $P_SCR
 
 # Make sure apt repos know of latest versions:
 apt update
-apt autoremove
+apt autoremove ...??? Maybe now, maybe later, mabe never???
+
+# Selective get packages to lastest version:
+apt install metasploit-framework
 
 # Install missing packages:
 apt install gobuster
 apt install tree
+apt install htop
 
 # Setting aliases:
 echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
 
 # Get own GH scripts:
-for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost; do
+for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost filter-by-length; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
 	chmod 700 "$fp"
 done
+
+# Get moar wordlists:
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/Names/names.txt \
+ 	-O /usr/share/wordlists/usernames-large.txt
+
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt
+	-O /usr/share/wordlists/usernames-small.txt
 
 # Make sure scripts are in $PATH:
 echo "export PATH=$P_SCR:$PATH" >> ~/.bashrc
