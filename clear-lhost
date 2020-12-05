@@ -1,7 +1,9 @@
 #!/bin/bash
 
 P_THM=/root/thm
-P_SCR=$P_TH/scripts
+P_SCR=$P_THM/scripts
+
+echo "Using path to scripts: $P_THM"
 
 # Remove old value, from (1) .bashrc and (2) current shell (and it's children):
 line_nr=$(egrep -n '^export LHOST=' ~/.bashrc | cut -d ':' -f 1 | head -n 1)
