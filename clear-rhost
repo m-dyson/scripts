@@ -1,7 +1,15 @@
 #!/bin/bash
 
+P_THM=/root/thm
+P_SCR=$P_TH/scripts
+
 # Remove old value, from (1) .bashrc and (2) current shell (and it's children):
 line_nr=$(egrep -n '^export RHOST=' ~/.bashrc | cut -d ':' -f 1 | head -n 1)
-sed -i -e $line_nr'd' ~/.bashrc
-unset RHOST
-./please-run-bash
+
+if [ -z "$line_nr" ]; then
+	echo "Could't find line nr with RHOST export in ~/.bashrc. Abort!"
+else
+	echo "Deleting line nr. $line_nr from ~/.bashrc..."
+	sed -i -e $line_nr'd' ~/.bashrc
+	$P_SCR/please-run-bash
+fi
