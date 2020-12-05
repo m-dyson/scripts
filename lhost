@@ -5,12 +5,13 @@
 if [ -z "$LHOST" ]; then
 	echo "The var LHOST is not yet set...."
 	lhost_eth0=$(ip a show eth0 2> /dev/null | egrep -o '^\s*inet\s[0-9.]+' | xargs | cut -d ' ' -f 2)
-	if [ -z "$lhost_eth0" ]; then
+	echo "Found value for \$lhost_eth0 via 'ip a' command: $lhost_eth0"
+	if [ -z "$lhost_eth0" ] && [ "$lhost_eth0" != "" ]; then
 		echo "Please enter IP for Kali machine:"
 		echo -n ">>> "
 		read lhost
 	else
-		lhost="$lhost_eth"
+		lhost="$lhost_eth0"
 	fi
 
 	if [ "$1" == "--force" ] ; then
@@ -31,4 +32,3 @@ if [ -z "$LHOST" ]; then
 else
 	echo "LHOST=$LHOST"
 fi
-
