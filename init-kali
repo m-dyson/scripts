@@ -65,11 +65,11 @@ wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/
 	-O /usr/share/wordlists/usernames-small.txt
 
 # Make sure scripts are in $PATH:
-echo "export PATH=$P_SCR:$PATH" >> ~/.bashrc
+echo "export PATH=$P_BIN:$P_SCR:$PATH" >> ~/.bashrc
 
 # Make sure that rerunning bash after clearing R/LHOST vars doesn't inherit
 # values from parent process:
-echo "unset RHOST; unset LHOST" >> ~/bashrc
+echo "unset RHOST; unset LHOST" >> ~/.bashrc
 
 # Write LHOST/RHOST to ~/.bashrc. Requires another cmd (e.g "bash") to get
 # the vars in your current shell session!
