@@ -1,7 +1,10 @@
 #!/bin/bash
 
+P_THM=/root/thm
+P_SCR=$P_THM/scripts
+
 # Remove old value, from (1) .bashrc and (2) current shell (and it's children):
-./clear-lhost
+$P_SCR/clear-lhost
 
 # Use exiting script to set new value:
-./lhost
+$P_SCR/lhost
