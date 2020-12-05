@@ -1,0 +1,7 @@
+#!/bin/bash
+
+P_SCR=/root/thm/scripts
+
+wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh -O "$P_SCR/linenum"
+
+chmod 700 "$P_SCFR/linenum"

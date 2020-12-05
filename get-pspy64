@@ -1,0 +1,7 @@
+#!/bin/bash
+
+P_BIN=/root/thm/bin
+
+wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64 -O "$P_BIN/pspy64"
+
+chmod 700 "$P_BIN/pspy64"
