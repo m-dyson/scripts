@@ -18,8 +18,12 @@ cp /home/kali/.bashrc ~
 mkdir -p $P_THM
 
 # Make seperate dir for scripts:
-P_SCR="$P_THM"'/scripts'
+P_SCR=$P_THM/scripts
 mkdir -p $P_SCR
+
+# Make seperate dir for ELF binaries:
+P_BIN=$P_THM/bin
+mkdir -p $P_BIN
 
 # Make sure apt repos know of latest versions:
 apt update
@@ -47,7 +51,7 @@ echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
 
 # Get own GH scripts:
-for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost filter-by-length; do
+for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost filter-by-length get-linenum; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
 	chmod 700 "$fp"
@@ -69,8 +73,11 @@ echo "unset RHOST; unset LHOST" >> ~/bashrc
 
 # Write LHOST/RHOST to ~/.bashrc. Requires another cmd (e.g "bash") to get
 # the vars in your current shell session!
-"$P_SCR/lhost" --force
-"$P_SCR/rhost" --force
+$P_SCR/lhost --force
+$P_SCR/rhost --force
 
 # Attend user to rerun bash:
-"$P_SCR/please-run-bash"
+$P_SCR/please-run-bash
+
+echo "NB! Please inspect ~/.bashrc if everything went OK..."
+echo
