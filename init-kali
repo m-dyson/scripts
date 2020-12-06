@@ -26,11 +26,11 @@ P_BIN=$P_THM/bin
 mkdir -p $P_BIN
 
 # Make sure apt repos know of latest versions:
-apt update
-apt autoremove
+apt -y update
+apt -y autoremove
 
 # Selective get packages to lastest version:
-apt install metasploit-framework
+apt -y install metasploit-framework
 
 # Make sure all gems are present for msf:
 cd /usr/share/metasploit-framework
@@ -41,14 +41,17 @@ bundle install
 cd ~
 
 # Install missing packages:
-apt install gobuster
-apt install tree
-apt install htop
-apt install screenfetch
+apt -y install gobuster
+apt -y install tree
+apt -y install htop
+apt -y install screenfetch
 
 # Setting aliases:
 echo "alias ll='ls -l'" >> ~/.bashrc
 echo "alias la='ls -la'" >> ~/.bashrc
+
+# Gather handy scripts from other places on the Kali filesystem into one place:
+cp /usr/share/doc/python3-impacket/examples/smbserver.py $P_SCR
 
 # Get own GH scripts:
 for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost filter-by-length get-linenum; do
