@@ -1,0 +1,25 @@
+#!/bin/bash
+
+P_THM=/root/thm
+P_SCR=$P_THM/scripts
+
+# Remove old value from ~/.bashrc
+$P_SCR/clear-rhost
+
+echo "Please enter new value for RHOST -> the IP for target machine:"
+echo -n ">>> "
+read rhost
+echo "Use new value: $rhost? [y/n]"
+echo -n ">>> "
+
+if [ "${confirmation:0:1}" == "y" ]; then
+	echo "OK, using new value for RHOST"
+	str="export RHOST=$rhost"
+	echo "$str" >> ~/.bashrc
+	echo "Updated ~/.bashrc"
+	$P_SCR/please-run-bash
+else
+	echo "Abort"
+fi
+
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the Windows privilege escalation tool Mimikatz 2.x ("Kiwi"). It will make
+# life way easier on Windows machines where you already have a non-admin user.
+
+TMP=/tmp/mimkatz
+BIN=/root/thm/bin/mimikatz
+
+mkdir $TMP
+cd $TMP
+wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20200918-fix/mimikatz_trunk.7z \
+	-O $TMP/mimikatz.7z
+
+7z x mimikatz.7z
+cd ~
+cp -r $TMP $BIN
