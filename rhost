@@ -1,5 +1,8 @@
 #!/bin/bash
 
+P_THM=/root/thm
+P_SCR=$P_THM/scripts
+
 # List RHOST if already set, else (1) write to ~/.bash_profile for following
 # shells and (2) echo statement for manual copying.
 
@@ -15,7 +18,7 @@ if [ -z "$RHOST" ]; then
 		str="export RHOST=$rhost"
 		echo "$str" >> ~/.bashrc
 		echo "Updated ~/.bashrc"
-		./please-run-bash
+		$P_SCR/please-run-bash
 	else
 		echo "Abort"
 	fi
