@@ -29,14 +29,14 @@ mkdir -p $P_BIN
 apt -y update
 apt -y autoremove
 
-# Selective get packages to lastest version:
-apt -y install metasploit-framework
-
-# Make sure all gems are present for msf:
-cd /usr/share/metasploit-framework
-gem install bundler
-gem update --system
-bundle install
+## TAKES ALOTTA TIME...
+## Selective get packages to lastest version:
+# apt -y install metasploit-framework
+## Make sure all gems are present for msf:
+# cd /usr/share/metasploit-framework
+# gem install bundler
+# gem update --system
+# bundle install
 
 cd ~
 
