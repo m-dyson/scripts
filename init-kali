@@ -30,6 +30,7 @@ apt -y update
 apt -y autoremove
 
 ## TAKES ALOTTA TIME...
+############################################S
 ## Selective get packages to lastest version:
 # apt -y install metasploit-framework
 ## Make sure all gems are present for msf:
@@ -53,8 +54,12 @@ echo "alias la='ls -la'" >> ~/.bashrc
 # Gather handy scripts from other places on the Kali filesystem into one place:
 cp /usr/share/doc/python3-impacket/examples/smbserver.py $P_SCR
 
+script_names=(lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost \
+reset-rhost set-lhost set-rhost filter-by-length get-linenum get-mimikatz \
+get-pspy64)
+
 # Get own GH scripts:
-for s in lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost reset-rhost filter-by-length get-linenum; do
+for s in ${script_names[@]}; do
 	fp="$P_SCR/$s"
 	wget -O "$fp" "https://raw.githubusercontent.com/m-dyson/scripts/master/$s"
 	chmod 700 "$fp"
