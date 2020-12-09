@@ -7,4 +7,4 @@ P_SCR=$P_THM/scripts
 $P_SCR/clear-lhost
 
 # Use exiting script to set new value:
-$P_SCR/lhost
+$P_SCR/set-lhost
