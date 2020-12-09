@@ -12,5 +12,7 @@ wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20200918-fix
 	-O $TMP/mimikatz.7z
 
 7z x mimikatz.7z
-cd ~
 cp -r $TMP $BIN
+rm -r $TMP
+
+cd ~
