@@ -55,7 +55,7 @@ echo "alias la='ls -la'" >> ~/.bashrc
 cp /usr/share/doc/python3-impacket/examples/smbserver.py $P_SCR
 
 script_names=(lhost rhost please-run-bash clear-lhost clear-rhost reset-lhost \
-reset-rhost set-lhost set-rhost filter-by-length get-linenum get-mimikatz \
+reset-rhost set-lhost set-rhost filter-by-length get-linenum get-mimikatz get-winpeas \
 get-pspy64)
 
 # Get own GH scripts:

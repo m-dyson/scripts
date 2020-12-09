@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Get the Windows local system enum tool winPEAS. It will make
+# life way easier on Windows machines where you already have a non-admin user.
+
+TMP=/tmp/winpeas
+BIN=/root/thm/bin/winpeas-x86
+
+mkdir $TMP
+cd $TMP
+
+wget https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/x86/Release/winPEAS.exe \
+	-O $TMP/winpeas-x86.exe
+
+wget https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/raw/master/winPEAS/winPEASexe/winPEAS/bin/x64/Release/winPEAS.exe \
+	-O $TMP/winpeas-x64.exe
+
+cp $TMP/winpeas-x86.exe $BIN/winpeas-x86.exe
+cp $TMP/winpeas-x64.exe $BIN/winpeas-x64.exe
+
+rm -r $TMP
+
+cd ~
