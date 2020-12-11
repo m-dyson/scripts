@@ -69,7 +69,7 @@ done
 wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/Names/names.txt \
  	-O /usr/share/wordlists/usernames-large.txt
 
-wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt \
 	-O /usr/share/wordlists/usernames-small.txt
 
 # Make sure scripts are in $PATH:
@@ -85,7 +85,4 @@ $P_SCR/lhost --force
 $P_SCR/rhost --force
 
 # Attend user to rerun bash:
-$P_SCR/please-run-bash
-
-echo "NB! Please inspect ~/.bashrc if everything went OK..."
-echo
+# ``~$P_SCR/please-run-bash
